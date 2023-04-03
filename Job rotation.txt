@@ -1,0 +1,130 @@
+2
+
+// recebe o número do usuário
+const numero = parseInt(prompt("Digite um número:"));
+
+// define as variáveis que serão utilizadas para calcular a sequência de Fibonacci
+let a = 0;
+let b = 1;
+let c;
+
+// percorre a sequência de Fibonacci até que o número informado seja atingido ou ultrapassado
+while (b < numero) {
+  c = a + b;
+  a = b;
+  b = c;
+}
+
+// verifica se o número informado pertence à sequência de Fibonacci e exibe uma mensagem
+if (b === numero) {
+  console.log(numero + " pertence à sequência de Fibonacci.");
+} else {
+  console.log(numero + " não pertence à sequência de Fibonacci.");
+}
+
+
+
+3
+
+const faturamentoDiario = [
+  { dia: 1, valor: 22174.1664 },
+  { dia: 2, valor: 24537.6698 },
+  { dia: 3, valor: 26139.6134 },
+  { dia: 4, valor: 0.0 },
+  { dia: 5, valor: 0.0 },
+  { dia: 6, valor: 26742.6612 },
+  { dia: 7, valor: 0.0 },
+  { dia: 8, valor: 42889.2258 },
+  { dia: 9, valor: 46251.174 },
+  { dia: 10, valor: 11191.4722 },
+  { dia: 11, valor: 0.0 },
+  { dia: 12, valor: 0.0 },
+  { dia: 13, valor: 3847.4823 },
+  { dia: 14, valor: 373.7838 },
+  { dia: 15, valor: 2659.7563 },
+  { dia: 16, valor: 48924.2448 },
+  { dia: 17, valor: 18419.2614 },
+  { dia: 18, valor: 0.0 },
+  { dia: 19, valor: 0.0 },
+  { dia: 20, valor: 35240.1826 },
+  { dia: 21, valor: 43829.1667 },
+  { dia: 22, valor: 18235.6852 },
+  { dia: 23, valor: 4355.0662 },
+  { dia: 24, valor: 13327.1025 },
+  { dia: 25, valor: 0.0 },
+  { dia: 26, valor: 0.0 },
+  { dia: 27, valor: 25681.8318 },
+  { dia: 28, valor: 1718.1221 },
+  { dia: 29, valor: 13220.495 },
+  { dia: 30, valor: 8414.61 },
+];
+
+// cálculo do menor e do maior valor de faturamento
+let menorValor = Infinity;
+let maiorValor = -Infinity;
+for (const item of faturamentoDiario) {
+  if (item.valor < menorValor) {
+    menorValor = item.valor;
+  }
+  if (item.valor > maiorValor) {
+    maiorValor = item.valor;
+  }
+}
+
+// cálculo da média mensal
+let somaValores = 0;
+let numDiasComFaturamento = 0;
+for (const item of faturamentoDiario) {
+  if (item.valor > 0) {
+    somaValores += item.valor;
+    numDiasComFaturamento++;
+  }
+}
+const mediaMensal = somaValores / numDiasComFaturamento;
+
+// cálculo do número de dias em que o valor de faturamento diário foi superior à média mensal
+let numDiasAcimaDaMedia = 0;
+for (const item of faturamentoDiario) {
+  if (item.valor > mediaMensal) {
+    numDiasAcimaDaMedia++;
+  }
+}
+
+console.log(`Menor valor de faturamento: ${menorValor}`);
+console.log(`Maior valor de faturamento: ${maiorValor}`);
+console.log(`Media valor de faturamento: ${mediaMensal}`);
+console.log(`Numero de dias acima da média: ${numDiasAcimaDaMedia}`);
+
+4  
+
+const faturamento = {
+  "SP": 67836.43,
+  "RJ": 36678.66,
+  "MG": 29229.88,
+  "ES": 27165.48,
+  "Outros": 19849.53
+};
+
+// Calcula o valor total mensal da distribuidora
+const total = Object.values(faturamento).reduce((acc, curr) => acc + curr, 0);
+
+// Calcula o percentual de representação de cada estado
+const percentuais = {};
+for (const estado in faturamento) {
+  percentuais[estado] = (faturamento[estado] / total) * 100;
+}
+
+console.log(percentuais);
+
+
+5
+
+let str = "Hello, world!"; // string a ser invertida
+let strInvertida = "";
+
+// percorre a string de trás para frente e adiciona cada caractere na nova string
+for (let i = str.length - 1; i >= 0; i--) {
+  strInvertida += str[i];
+}
+
+console.log(strInvertida); // exibe a string invertida no console
